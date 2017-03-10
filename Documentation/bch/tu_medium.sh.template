@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+@XRUN ./@XPROG_unaligned 16
+@XRUN ./@XPROG_mem
+@XRUN ./@XPROG_bench_dyn 13 8 100
+@XRUN ./@XPROG_correct burst 16
+@XRUN ./@XPROG_correct rand 16 13 10000000
+
+for m in 12 13 14; do
+    echo "./tu_tool -d -c16 -m $m -t16 -b10000000"
+    @XRUN ./@XPROG_tool -d -c16 -m $m -t16 -b10000000
+done
+
+i=0
+while [ $i -lt 100 ]; do
+    @XRUN ./@XPROG_tool -r $i
+    i=$(($i+1))
+done
+
+echo SUCCESS

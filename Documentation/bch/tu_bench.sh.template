@@ -1,0 +1,11 @@
+#!@XSHELL
+
+chrt 80 ./@XPROG_bench_dyn 13 4 10
+chrt 80 ./@XPROG_bench_m13t4 13 4 10
+chrt 80 ./@XPROG_bench_m13t4c 13 4 10
+
+[ -z "$1" ] && exit
+
+chrt 80 ./@XPROG_bench_dyn 13 8 10
+chrt 80 ./@XPROG_bench_m13t8 13 8 10
+chrt 80 ./@XPROG_bench_m13t8c 13 8 10

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+@XRUN ./@XPROG_unaligned 16
+@XRUN ./@XPROG_mem
+@XRUN ./@XPROG_bench_dyn 13 8 1000
+@XRUN ./@XPROG_correct burst 16
+@XRUN ./@XPROG_correct rand 16 13 2000000000
+@XRUN ./@XPROG_correct full 16
+
+i=0
+while [ $i -lt 1000 ]; do
+    @XRUN ./@XPROG_tool -r $i
+    i=$(($i+1))
+done
+
+@XRUN ./@XPROG_poly4
+
+echo SUCCESS

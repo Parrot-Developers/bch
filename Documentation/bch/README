@@ -1,0 +1,17 @@
+This is a simple test framework for the BCH library.
+
+It is supposed to reside in directory linux/Documentation/bch in order to allow
+direct inline including of file lib/bch.c. Edit Makefile and tu_*.c files if
+this is not the case.
+
+Porting to a specific architecture should be quite easy; just at look at
+Makefile and arch.mk.
+
+The following shell scripts should be generated:
+
+xxx_tu_short.sh  => short test suite (runs for typically less than 1 hour)
+xxx_tu_medium.sh => longer test suite (several hours)
+xxx_tu_long.sh   => very long test suite (several weeks)
+
+Those scripts invoke a combination of the various compiled test tools. See the
+headers of tu_*.c files for details.
